@@ -8,7 +8,7 @@ const ShopCategory = (props)=>{
     
     return(
         <div className="shop-category">
-            <img src={props.banner} alt="" />
+            <img className="shopcategory-banner" src={props.banner} alt="" />
             <div className="shopcategory-indexSort">
                 <p>
                     <span>Showing 1-12 </span>Out of 36 products
@@ -17,8 +17,7 @@ const ShopCategory = (props)=>{
                     Sort by <img src="" alt="" />
                 </div>
             </div>
-            <div className="shopcategory-products">
-               <h1>hih</h1>
+            <div className="shopcategory-products"> 
                 {
                 all_product.map((item ,i)=>{
                     
@@ -33,6 +32,9 @@ const ShopCategory = (props)=>{
                     })
                 }
 
+            </div>
+            <div className="shopcategory-loadmore">
+                Explore More
             </div>
         </div>
     )
