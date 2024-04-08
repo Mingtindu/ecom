@@ -21,7 +21,7 @@ Authentication: JSON Web Tokens (JWT)<br/>
 <br/>
 
 ## Setup Instructions
-Clone the repository: git clone https://github.com/your-username/ecommerce-project.git<br/>
+Clone the repository: git clone https://github.com/Mingtindu/ecom.git<br/>
 Navigate to the project directory: cd ecommerce-project<br/>
 Install dependencies: npm install<br/>
 Set up environment variables for database connection, JWT secret, and payment gateway API keys.<br/>
@@ -30,12 +30,13 @@ Open your browser and access the application at http://localhost:3000 (or the sp
 Future Enhancements<br/>
 
 ## Contributors <br/>
-### Mingtindu Sherpa <br/>
+##  Mingtindu Sherpa <br/>
 <br/>
-## License <br/>
-### This project is licensed under the MIT License.<br/>
 
-### Feel free to customize this README file according to your project's specific details and requirements. Happy coding!<br/>
+# License <br/>
+## This project is licensed under the MIT License.<br/>
+
+##  Feel free to customize this README file according to your project's specific details and requirements. Happy coding!<br/>
 
 
 
