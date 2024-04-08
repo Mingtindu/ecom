@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer.jsx'
 import men_banner from './components/Assets/banner_mens.png';
 import women_banner from './components/Assets/banner_women.png';
 import kid_banner from './components/Assets/banner_kids.png';
+
 function App() {
 
   return(
