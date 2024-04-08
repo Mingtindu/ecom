@@ -2,9 +2,11 @@
 ### Overview <br/>
 ### This README file provides an overview and necessary information about the Ecommerce project. <br/>
 <br/>
+
 ## Project Description <br/>
 The Ecommerce project is designed to create a fully functional online shopping platform. Users can browse through various categories, add products to their cart, proceed to checkout, and make secure payments. The project aims to provide a seamless shopping experience for customers and streamline the process for managing products and orders for administrators. <br/>
 <br/>
+
 ## Features<br/>
 User Authentication: Allow users to register, login, and manage their profiles.<br/>
 Product Management: Admins can add, edit, and delete products with relevant details such as name, description, price, and images.<br/>
