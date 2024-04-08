@@ -6,3 +6,25 @@
     height: 90vh;
     
 }
+.relatedproducts h1{
+    color:#171717;
+    font-size: 50px;
+    font-weight: 500;
+
+
+
+}
+.relatedproducts hr{
+    width: 200px;
+    height: 6px;
+    border-radius: 10px;
+    background: #252525;
+
+}
+.relatedproduct-item{
+    margin-top: 50px;
+    display: flex;
+    gap: 15px;
+
+    
+}
