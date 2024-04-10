@@ -74,3 +74,15 @@
     font-weight: 600;
 
 }
+}
+
+@media(max-width:1280px){
+    .offers{
+        padding: 0px 80px;
+        margin-bottom: 120px;
+    }
+    .offers-left {
+        font-size: 40px;
+
+    }
+}
