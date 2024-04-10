@@ -15,13 +15,20 @@ app.use(cors());
 
 //Database connection with mongodb atlas
 
-mongoose.connect("mongodb+srv://mingtindu:sherpa123@cluster0.tmhjkd7.mongodb.net/e-commerce")
+// mongoose.connect("mongodb+srv://mingtindu:sherpa123@cluster0.tmhjkd7.mongodb.net/e-commerce")
 
 //API creation 
 
 app.get('/register',(req,res)=>{
     res.send("This is register  app is Running");
 
+})
+//Image storage engine
+const storage =  multer.diskStorage({
+    destination:'./uploa/image',
+    filename:(req,file,cb)=>{
+        return cb(null,`${file.fieldname}_${Date.now}${path.extname(file.originalname)}`)
+    }
 })
 
 app.listen(port,(error)=>{
