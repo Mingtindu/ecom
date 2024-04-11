@@ -16,7 +16,12 @@ app.use(cors());
 
 //Database connection with mongodb atlas
 
+try{
  mongoose.connect("mongodb+srv://mingtindu:sherpa123@cluster0.tmhjkd7.mongodb.net/e-commerce")
+ console.log("successfully connected mongodb");
+}catch(er){
+    console.log(err);
+}
 
 //API creation 
 
@@ -86,4 +91,23 @@ const Product = mongoose.model("Product",{
         type:Boolean,
         default:true,
     }
+})
+
+app.use('/addProduct',async (req,res)=>{
+    const product = new Product({
+        id:req.body.id,
+        name:req.body.name,
+        image:req.body.image,
+        category:req.body.category,
+        new_price:req.body.new_price,
+        old_price:req.body.old_price
+    });
+    console.log(product);
+    await product.save();
+    console.log("saved");
+    res.json({
+        success:true,
+        name:req.body.name,
+    })
+
 })
