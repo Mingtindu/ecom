@@ -56,6 +56,8 @@ app.listen(port,(error)=>{
     }
 
 })
+
+
 //schema for creating product:
 const Product = mongoose.model("Product",{
     id:{
@@ -93,9 +95,40 @@ const Product = mongoose.model("Product",{
     }
 })
 
+//creating api for deleting product
+app.post('/remove',async(req,res)=>{
+    await Product.findOneAndDelete({id:req.body.id});
+    console.log("Removed");
+
+    res.json({
+        success:true,
+        name:req.body.name
+    })
+
+})
+//creating API for getting all product:
+app.get('/allProducts',async(req,res)=>{
+    let products = await Product.find({});
+    console.log("all product fethc");
+
+    res.send(products);
+
+})
+//addProduct API 
 app.use('/addProduct',async (req,res)=>{
+    //code for not generating id in database:
+    let products = await Product.find({})
+    let id;
+    if(products.length>0){
+        let last_product_array = products.slice(-1);//get the last product of the products array using slice method
+        let last_product = last_product_array[0];//retrieve 0th index value of last product:
+        id= last_product.id+1;
+    }else{
+        id=1;
+    }
+    //retrieve data from frontend through body using response
     const product = new Product({
-        id:req.body.id,
+        id:id,
         name:req.body.name,
         image:req.body.image,
         category:req.body.category,
@@ -103,9 +136,9 @@ app.use('/addProduct',async (req,res)=>{
         old_price:req.body.old_price
     });
     console.log(product);
-    await product.save();
+    await product.save();//product save to db
     console.log("saved");
-    res.json({
+    res.json({//send json response after success
         success:true,
         name:req.body.name,
     })
