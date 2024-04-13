@@ -22,33 +22,53 @@ const AddProduct = () => {
     };
 
     const Add_Product = async () => {
-        console.log(productDetails);
-        let responseData;
+        let responseData = {}; // Initialize response data object
         let product = productDetails;
-
-
         let formData = new FormData();
-        formData.append('product',image);
-        
-
-
-        // API to send data to backend 
-        await fetch('http://localhost:4000/upload',{
-            method:'POST',
-            headers:{
-                Accept:'application/json'
-            },
-            body:formData   
-        }).then((resp)=>{
-            resp.json().then((data)=> {responseData=data}  )
-
-        })
-        if(responseData.success){
-            product.image= responseData.image_url;
-            console.log(product)
+        formData.append('product', image);
+    
+        try {
+            const uploadResponse = await fetch('http://localhost:4000/upload', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                },
+                body: formData,
+            });
+    
+            // Check if the upload was successful
+            if (!uploadResponse.ok) {
+                throw new Error('Upload failed');
+            }
+    
+            // Parse the JSON response
+            responseData = await uploadResponse.json();
+            console.log('Response Data:', responseData); // Debugging output
+    
+            // Check if the upload was successful on the backend
+            if (responseData.success) {
+                
+                product.image= responseData.image_url;
+                console.log(product)
+                await fetch('http://localhost:4000/addProduct',{
+                    method:'POST',
+                    headers:{
+                        Access:'application/json',
+                       'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify(product)
+                }).then((resp)=>resp.json()).then((data)=>{
+                    data.success?alert("Product Added"):alert("Failed")
+                })
+            } else {
+                throw new Error('Upload failed on the server');
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+            alert('An error occurred. Please try again.');
         }
     };
-
+    
     return (
         <div className='add-product'> 
             <div className="addproduct-itemfield">

@@ -22,16 +22,13 @@ try{
 }catch(er){
     console.log(err);
 }
-
 //API creation 
-
 app.get('/register',(req,res)=>{
     res.send("This is register  app is Running");
-
 })
 //Image storage engine
 const storage =  multer.diskStorage({
-    destination:'./uploa/image',
+    destination:'./upload/image',
     filename:(req,file,cb)=>{
         return cb(null,`${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
@@ -41,7 +38,7 @@ const upload = multer({storage:storage});
 
 app.use('/images',express.static('upload/images'))
 app.post('/upload',upload.single('product'),(req,res)=>{
-    res.json({
+    res.json({  
         success:1,
         image_url:`http://localhost:${port}/images/${req.file.filename}`
     })
@@ -56,8 +53,6 @@ app.listen(port,(error)=>{
     }
 
 })
-
-
 //schema for creating product:
 const Product = mongoose.model("Product",{
     id:{
