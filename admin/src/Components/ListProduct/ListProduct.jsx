@@ -8,7 +8,7 @@ const LIstProduct = () => {
   const fetchInfo = async()=>{
     //fetching data from backend and storing it into allProducts state variable :
     await fetch('http://localhost:4000/allProducts')
-    .then((res)=>res.json()).then((data)=>{setAllProduct=data});
+    .then((res)=>res.json()).then((data)=>{setAllProduct(data)});
   }
 
   useEffect(()=>{
@@ -33,14 +33,14 @@ const LIstProduct = () => {
     <div className="listproduct-all-product">
       <hr />
       {allProducts.map((product,index)=>{
-        console.log(allProducts);
+        console.log(product.image);
         return <div key={index} className="listproduct-format-main listproduct-format">
-          <img className='listproduct-product-icon' src={product.image} alt="" />
+          <img className='listproduct-product-icon' src={product.image} alt="product-img" />
           <p>{product.name}</p>
           <p>${product.old_price}</p>
           <p>#{product.new_price}</p>
           <p>{product.category}</p>
-          <img src={croos_icon} alt="" className="listproduct-remove-icon" />
+          <img src={croos_icon} alt="" className="listproduct-remove-icon"/>
 
 
         
