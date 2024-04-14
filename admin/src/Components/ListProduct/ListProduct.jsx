@@ -15,15 +15,16 @@ const LIstProduct = () => {
     fetchInfo();
   },[])
 
-  const remove_product= async (id)=>{
-    await fetch('http://localhost:4000/removeProduct',{
-      method:'POST',
-      Headers:{
-        Accept:'application/json',
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify({id:id})
-    })
+    const remove_product= async (id)=>{
+      await fetch('http://localhost:4000/remove',{
+        method:'POST',
+        Headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({id:id})
+      })
+    console.log(id);
   await fetchInfo();
   }
   return (
