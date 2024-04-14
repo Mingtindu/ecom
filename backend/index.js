@@ -93,7 +93,9 @@ const Product = mongoose.model("Product",{
 //creating api for deleting product
 app.post('/remove',async(req,res)=>{
     await Product.findOneAndDelete({id:req.body.id});
+    console.log(`this is id ${req.body.id}`);
     console.log("Removed");
+
 
     res.json({
         success:true,
