@@ -18,7 +18,7 @@ const LIstProduct = () => {
     const remove_product= async (id)=>{
       await fetch('http://localhost:4000/remove',{
         method:'POST',
-        Headers:{
+        headers:{
           Accept:'application/json',
           'Content-Type':'application/json'
         },

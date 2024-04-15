@@ -96,7 +96,6 @@ app.post('/remove',async(req,res)=>{
     console.log(`this is id ${req.body.id}`);
     console.log("Removed");
 
-
     res.json({
         success:true,
         name:req.body.name
