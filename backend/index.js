@@ -134,39 +134,39 @@ const Users = mongoose.model('Users',{
 })
 
 //creating endpoint for registering user 
-// app.post('/signup',async (req,res)=>{
-//     let check = await Users.findOne({email:req.body.email});
-//     if(check){
-//         res.status(400).json({success:false,errors:"existing user found with same email "});
-//     }
-//     let cart = {};
-//     for (let i = 0; i < 300; i++) {
-//         cart[i]=0;
-//     }
-//     const user = new Users({
-//         name:req.body.username,
-//         email:req.body.email,
-//         password:req.body.password,
-//         cartData:cart,
-//     })
-//     await user.save();//method to save data in database
+app.post('/signup',async (req,res)=>{
+    let check = await Users.findOne({email:req.body.email});
+    if(check){
+        res.status(400).json({success:false,errors:"existing user found with same email "});
+    }
+    let cart = {};
+    for (let i = 0; i < 300; i++) {
+        cart[i]=0;
+    }
+    const user = new Users({
+        name:req.body.username,
+        email:req.body.email,
+        password:req.body.password,
+        cartData:cart,
+    })
+    await user.save();//method to save data in database
 
-//     //jwt authentication
+    //jwt authentication
 
-//     const data = {
-//         user:{
-//             id:user.id
-//         }
-//     }
+    const data = {
+        user:{
+            id:user.id
+        }
+    }
 
-//     const token = jwt.sign(data,'secret_ecom');//here secret_ecom
+    const token = jwt.sign(data,'secret_ecom');//here secret_ecom
     // is known as adding salt using this we can encrypt the data by one layer
 
-//     res.json({
-//         success:true,
-//         token
-//     })
-// })
+    res.json({
+        success:true,
+        token
+    })
+})
 //addProduct API 
 app.use('/addProduct',async (req,res)=>{
     //code for not generating id in database:
