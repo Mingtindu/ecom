@@ -186,14 +186,14 @@ app.post('/login',async(req,res)=>{
         }else{
                 res.json({
                     success:false,
-                    errors:"wrong password"
+                    errors:"Wrong Password"
                 })
 
             }
         }else{
             res.json({
                 success:false,
-                errors:"wrong email ID"
+                errors:"Wrong Email ID"
             })
         }
 })
