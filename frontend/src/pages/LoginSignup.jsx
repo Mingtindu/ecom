@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import './CSS/LoginSignup.css'
 const LoginSignup = ()=>{
     const [state,changeState]=useState("Login");
-    
+
     const login = async ()=>{
         // console.log("login executed");
-        
-
-
     }
     const signUp = async ()=>{
         console.log("signup executed");
