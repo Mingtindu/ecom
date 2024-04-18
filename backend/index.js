@@ -36,7 +36,7 @@ const storage =  multer.diskStorage({
 
 const upload = multer({storage:storage});
 
-app.use('/images',express.static('upload/images'))
+app.use('/images',express.static('upload/image'))
 app.post('/upload',upload.single('product'),(req,res)=>{
     res.json({  
         success:1,
@@ -53,6 +53,26 @@ app.listen(port,(error)=>{
     }
 
 })
+//APi to fetch newCollection product::
+app.get('/newCollection', async (req, res) => {
+    try {
+        // Execute the query to get all products
+        let products = await Product.find({});
+        
+        // Apply slice to the array of products
+        let newCollection = products.slice(1).slice(-1);
+        
+        console.log(`new collection fetched: ${newCollection}`);
+        
+        // Send the new collection as a response
+        res.json(newCollection);
+    } catch (error) {
+        console.error(error);
+        // Handle errors appropriately
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 //schema for creating product:
 const Product = mongoose.model("Product",{
     id:{
