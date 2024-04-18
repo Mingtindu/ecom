@@ -60,7 +60,7 @@ app.get('/newCollection', async (req, res) => {
         let products = await Product.find({});
         
         // Apply slice to the array of products
-        let newCollection = products.slice(1).slice(-1);
+        let newCollection =products.slice(1).slice(-1);
         
         console.log(`new collection fetched: ${newCollection}`);
         
