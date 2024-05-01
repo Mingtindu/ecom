@@ -1,6 +1,6 @@
 const port = 4000;
 const express = require('express');
-
+const bcrypt = require('bcryptjs');
 const app = express();
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -168,6 +168,9 @@ app.post('/signup',async (req,res)=>{
         email:req.body.email,
         password:req.body.password,
         cartData:cart,
+    })
+    bcrypt.hash('password',saltRounds,function(err, hash){
+        console.log(password);
     })
     await user.save();//method to save data in database
 
